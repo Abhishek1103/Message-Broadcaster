@@ -10,7 +10,7 @@ public class Server implements Runnable{
 
     public void run(){
         try{
-            DatagramSocket socket = new DatagramSocket();
+            DatagramSocket socket = new DatagramSocket(1811);
             byte[] buf = new byte[1024];
             while(running){
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);

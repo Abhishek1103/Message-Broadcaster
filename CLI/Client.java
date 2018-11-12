@@ -22,6 +22,8 @@ public class Client implements Runnable{
                 msg = sc.next();
                 for(InetAddress address: list){
                     broadcast(msg, address);
+                    //InetAddress addr = InetAddress.getByName("127.0.0.1");
+                    //broadcast(msg, addr);
                 }
                 
             }
