@@ -1,13 +1,20 @@
 import java.util.*;
-
-
 import java.io.*;
 import java.net.*;
 
-public class Client implements Runnable{
+/*
+    Can be run as a thread or as a separate process
+*/
+
+public class Sender implements Runnable{
     DatagramSocket socket;
     InetAddress addr;
     ArrayList<InetAddress> list;
+
+
+    public static void main(String[] args){
+        new Sender().run();
+    }
 
     public static final int PORT = 1811;
     public void run(){
@@ -19,11 +26,9 @@ public class Client implements Runnable{
                 list = generatelList();
                 String msg = "";
                 System.out.print("> ");
-                msg = sc.next();
+                msg = sc.nextLine();
                 for(InetAddress address: list){
                     broadcast(msg, address);
-                    //InetAddress addr = InetAddress.getByName("127.0.0.1");
-                    //broadcast(msg, addr);
                 }
                 
             }
