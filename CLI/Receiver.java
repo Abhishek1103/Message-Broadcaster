@@ -2,11 +2,17 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 
+/*
+    Can be run as a thread or as a separate process
+*/
 
-public class Server implements Runnable{
+public class Receiver implements Runnable{
 
     public static boolean running = true;
 
+    public static void main(String[] args){
+        new Receiver().run();
+    }
 
     public void run(){
         try{
