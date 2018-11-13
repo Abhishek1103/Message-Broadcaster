@@ -7,10 +7,10 @@ import java.net.*;
 */
 
 public class Sender implements Runnable{
-    DatagramSocket socket;
-    InetAddress addr;
-    ArrayList<InetAddress> list;
-
+    private DatagramSocket socket;
+    private InetAddress addr;
+    private ArrayList<InetAddress> list;
+    private String username;
 
     public static void main(String[] args){
         new Sender().run();
@@ -20,13 +20,15 @@ public class Sender implements Runnable{
     public void run(){
         try{
             Scanner sc = new Scanner(System.in);
+            System.out.print("Enter username: ");
+            username = sc.nextLine();
             System.out.println("\n");
             list = generatelList();
             while(true){
                 list = generatelList();
                 String msg = "";
                 System.out.print("> ");
-                msg = sc.nextLine();
+                msg = username + ": " + sc.nextLine();
                 for(InetAddress address: list){
                     broadcast(msg, address);
                 }

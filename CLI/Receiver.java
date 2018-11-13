@@ -8,6 +8,7 @@ import java.net.*;
 
 public class Receiver implements Runnable{
 
+    public static final int PORT = 1811;
     public static boolean running = true;
 
     public static void main(String[] args){
@@ -16,7 +17,7 @@ public class Receiver implements Runnable{
 
     public void run(){
         try{
-            DatagramSocket socket = new DatagramSocket(1811);
+            DatagramSocket socket = new DatagramSocket(PORT);
             byte[] buf = new byte[1024];
             while(running){
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
